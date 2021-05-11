@@ -1,0 +1,45 @@
+{
+  "name": "Twitter Crypto Tagger",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Tag Twitter users with their pet Crypto project",
+  "homepage_url": "https://twitter.com/euthenics",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["src/bg/background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "browser action demo",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "permissions": [
+    "http://*.twitter.com/, https://*.twitter.com/",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.twitter.com/*"],
+      "css": ["src/inject/inject.css"]
+    },
+    {
+      "matches": ["https://*.twitter.com/*"],
+      "js": ["js/jquery/jquery.min.js", "src/inject/inject.js"]
+    },
+    {
+      "matches": ["http://*.twitter.com/*"],
+      "css": ["src/inject/inject.css"]
+    },
+    {
+      "matches": ["http://*.twitter.com/*"],
+      "js": ["js/jquery/jquery.min.js", "src/inject/inject.js"]
+    }
+  ]
+}
